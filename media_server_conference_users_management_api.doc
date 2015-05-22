@@ -1,0 +1,168 @@
+Message-ID: <1914838594.54.1432287646895.JavaMail.confluence@jira.easemob.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_53_1232102824.1432287646894"
+
+------=_Part_53_1232102824.1432287646894
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html>
+    <head>
+        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unles=
+s this meta tag is present -->
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Du=
+tf-8">
+        <title>media_server_conference_users_management_api</title>
+        <style>
+            body, p, td, table, tr, .bodytext, .stepfield {
+=09            font-family: Arial, Helvetica, FreeSans, sans-serif;
+            }
+            .panel {
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #999;
+                background-color: #f0f0f0;
+            }
+            .noteMacro { border-style: solid; border-width: 1px; border-col=
+or: #F0C000; background-color: #FFFFCE; text-align:left;}
+            .warningMacro { border-style: solid; border-width: 1px; border-=
+color: #c00; background-color: #fcc; text-align:left;}
+            .infoMacro { border-style: solid; border-width: 1px; border-col=
+or: #69c; background-color: #D8E4F1; text-align:left;}
+            .tipMacro { border-style: solid; border-width: 1px; border-colo=
+r: #090; background-color: #dfd; text-align:left;}
+            .informationMacroPadding { padding: 5px 0 0 5px; }
+
+            table.infoMacro td, table.warningMacro td, table.tipMacro td, t=
+able.noteMacro td, table.sectionMacro td {
+                border: none;
+            }
+
+            .grid {
+                margin: 2px 0px 5px 0px;
+                border-collapse: collapse;
+            }
+            .grid th  {
+                border: 1px solid #ccc;
+                padding: 2px 4px 2px 4px;
+                background: #f0f0f0;
+                text-align: center;
+            }
+            .grid td  {
+                border: 1px solid #ccc;
+                padding: 3px 4px 3px 4px;
+            }           =20
+        </style>
+    </head>
+
+    <body style=3D"background-color: white; padding: 10px;">
+        <h1>media_server_conference_users_management_api</h1>
+        <p>// response on failure for all operations<br />{<br />=C2=A0 &qu=
+ot;result&quot;:&quot;failed&quot;, <br />=C2=A0 &quot;error_code&quot;:10,=
+ // type of int16<br />=C2=A0 &quot;message&quot;:&quot;error message&quot;=
+ <br />}</p><p>=C2=A0</p><hr /><p><br />// create_conference request<br />{=
+<br />=C2=A0 &quot;operation&quot;:&quot;create_conference&quot;, <br />=C2=
+=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;c=
+onference_id&quot;:&quot;conference_id&quot;, <br />=C2=A0 &quot;conference=
+_type&quot;:&quot;intercom&quot; / &quot;video&quot;<br />}<br /><br />// c=
+reate_conference response on success<br />{<br />=C2=A0 &quot;result&quot;:=
+&quot;ok&quot;, <br />=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=
+=C2=A0<br />=C2=A0 &quot;server_port&quot;:1234, // type of uint16, only av=
+ailable for video conference. No such field for intercom(audio) conference.=
+ <br />=C2=A0 &quot;conference_id&quot;:&quot;conference_id&quot;, <br />=
+=C2=A0 &quot;conference_type&quot;:&quot;intercom&quot; / &quot;video&quot;=
+<br />}</p><p>=C2=A0</p><hr /><p><br />// add_users request<br />{<br />=C2=
+=A0 &quot;operation&quot;:&quot;add_users&quot;, <br />=C2=A0=C2=A0&quot;ap=
+pkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;conference_id&quot=
+;:&quot;conference_id&quot;, <br />=C2=A0 &quot;user_list&quot;:[&quot;user=
+_id0&quot;, &quot;user_id1&quot;, &quot;user_id2&quot;], <br />=C2=A0 &quot=
+;media&quot;:[] // media_control.<a href=3D"http://cpp:207" class=3D"extern=
+al-link" rel=3D"nofollow">cpp:207</a> -- //how to do with &quot;media&quot;=
+ field?<br />}<br /><br />// add_users response on success<br />{<br />=C2=
+=A0 &quot;result&quot;:&quot;ok&quot;, <br />=C2=A0=C2=A0&quot;appkey&quot;=
+ : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;user_list&quot;:[{&quot;user=
+_id&quot;:&quot;user_id0&quot;, &quot;channel_id&quot;:1234}, {&quot;user_i=
+d&quot;:&quot;user_id0&quot;, &quot;channel_id&quot;:1234, &quot;video_chan=
+nel_id&quot;:1234}],=C2=A0 // two members, 0 -&gt; audio user, 1 -&gt; vide=
+o user<br />=C2=A0 &quot;conference_id&quot;:&quot;conference_id&quot;<br /=
+>}</p><p>=C2=A0</p><hr /><p><br />// delete_users request<br />{<br />=C2=
+=A0 &quot;operation&quot;:&quot;delete_users&quot;, <br />=C2=A0=C2=A0&quot=
+;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;conference_id&q=
+uot;:&quot;conference_id&quot;, <br />=C2=A0 &quot;user_list&quot;:[&quot;u=
+ser_id0&quot;, &quot;user_id1&quot;, &quot;user_id2&quot;]<br />}<br /><br =
+/>// delete_users response on success<br />{<br />=C2=A0 &quot;result&quot;=
+:&quot;ok&quot;, <br />=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=
+=C2=A0<br />=C2=A0 &quot;conference_id&quot;=3D&quot;conference_id&quot;,<b=
+r />=C2=A0 &quot;deleted_users&quot;=3D[&quot;user_id0&quot;, &quot;user_id=
+1&quot;]<br />}</p><p>=C2=A0</p><hr /><p><br />// delete_conference request=
+<br />{<br />=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br =
+/>=C2=A0 &quot;operation&quot;:&quot;delete_conference&quot;, <br />=C2=A0 =
+&quot;conference_id&quot;:&quot;conference_id&quot;, <br />}<br /><br />// =
+delete_conference response on success<br />{<br />=C2=A0 =C2=A0&quot;appkey=
+&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0<span style=3D"line-height: 1=
+.4285715;">=C2=A0 &quot;result&quot;:&quot;ok&quot;,=C2=A0</span><span styl=
+e=3D"line-height: 1.4285715;">=C2=A0<br />=C2=A0 =C2=A0&quot;conference_id&=
+quot;=3D&quot;conference_id&quot;<br /></span><span style=3D"line-height: 1=
+.4285715;">}</span></p><p>=C2=A0</p><hr /><p><br />// get_list request<br /=
+>{<br />=C2=A0 &quot;operation&quot;:&quot;get_list&quot;, <br />=C2=A0 &qu=
+ot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;param&quot;:&=
+quot;select&quot; / &quot;delete&quot; / &quot;active&quot;, // get current=
+ all/deleted/current active conference list <br />}<br /><br />// get_list =
+response on success<br />{<br />=C2=A0 &quot;result&quot;:&quot;ok&quot;,<b=
+r /><span style=3D"line-height: 1.4285715;">=C2=A0=C2=A0</span><span style=
+=3D"line-height: 1.4285715;">&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0=
+</span></p><p>=C2=A0 &quot;conference_list&quot;:[<br /><span style=3D"line=
+-height: 1.4285715;">=C2=A0 =C2=A0 =C2=A0 {<br />=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;conference_id&quot;:&quot;conf_id0&quot;, <br />=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &quot;active_user_count&quot;:5, <br />=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;display_name&quot;:&quot;xxxxx&quot;, <br />=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &quot;type&quot;:&quot;normal&quot; / &quot;intercom&quot; / &quot;v=
+ideo&quot;<br />=C2=A0 =C2=A0 =C2=A0 },=C2=A0<br />=C2=A0 =C2=A0 =C2=A0=C2=
+=A0{<br />=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;conference_id&quot;:&quot;conf_=
+id1&quot;,=C2=A0<br />=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;active_user_count&q=
+uot;:4,=C2=A0<br />=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;display_name&quot;:&qu=
+ot;xxxxx&quot;,=C2=A0<br />=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;type&quot;:&qu=
+ot;normal&quot; / &quot;intercom&quot; / &quot;video&quot;<br />=C2=A0 =C2=
+=A0 =C2=A0 },=C2=A0<br />=C2=A0 =C2=A0 =C2=A0=C2=A0{<br />=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &quot;conference_id&quot;:&quot;conf_id2&quot;,=C2=A0<br />=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &quot;active_user_count&quot;:3, =C2=A0<br />=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &quot;display_name&quot;:&quot;xxxxx&quot;,=C2=A0<=
+br />=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;type&quot;:&quot;normal&quot; / &quo=
+t;intercom&quot; / &quot;video&quot;<br />=C2=A0 =C2=A0 =C2=A0 }<br />=C2=
+=A0 ]<br /></span><span style=3D"line-height: 1.4285715;">}</span></p><p>=
+=C2=A0</p><hr /><p><br />// query_conference request<br />{<br />=C2=A0=C2=
+=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;operati=
+on&quot;:&quot;query_conference&quot;, <br />=C2=A0 &quot;conference_id&quo=
+t;:&quot;conference_id&quot;, <br />}<br /><br />// query_conference respon=
+se on success<br />{<br />=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quo=
+t;,=C2=A0<br />=C2=A0 &quot;result&quot;:&quot;ok&quot;, <br />=C2=A0 &quot=
+;exist&quot;:&quot;yes&quot; / &quot;no&quot;<br />}</p><p>=C2=A0</p><hr />=
+<p>edited by jifang@2014/10/06, <br />reason: add grant/release token api.<=
+/p><p>// user get / release token in a conference<br />request:<br />{<br /=
+>=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &qu=
+ot;operation&quot;:&quot;get_token&quot;, <br />=C2=A0 &quot;conference_id&=
+quot;:&quot;conference_id&quot;, <br />=C2=A0 &quot;user_id&quot;:&quot;use=
+r_id&quot;, <br />}<br /><br />response for success case:<br />{<br />=C2=
+=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=A0 &quot;o=
+peration&quot;:&quot;get_token&quot;, <br />=C2=A0 &quot;conference_id&quot=
+;:&quot;conference_id&quot;, <br />=C2=A0 &quot;user_id&quot;:&quot;user_id=
+&quot;, <br />=C2=A0 &quot;result&quot;:&quot;yes&quot;, <br />=C2=A0 &quot=
+;channel_num&quot;:1000<br />}<br /><br />response for failure case: <br />=
+{<br />=C2=A0=C2=A0&quot;appkey&quot; : &quot;appkey&quot;,=C2=A0<br />=C2=
+=A0 &quot;operation&quot;:&quot;get_token&quot;,<br />=C2=A0 &quot;conferen=
+ce_id&quot;:&quot;conference_id&quot;,<br />=C2=A0 &quot;user_id&quot;:&quo=
+t;user_id&quot;,<br />=C2=A0 &quot;result&quot;:&quot;failed&quot;, <br />=
+=C2=A0 &quot;error_message&quot;:&quot;xxxxx&quot;<br />}<br /><br />for re=
+lease token, simply use release_token for operation name.</p><p>=C2=A0</p><=
+hr /><p><br />edited by jifang@2014/10/07<br />reason: update get_list resp=
+onse. =C2=A0</p><p>edited by jifang@2014/09/23<br />reason: new information=
+ was added to response:</p><p>create conference:<br />conference_id<br />co=
+nference_type</p><p>add users:<br />conference_id<br />user_list</p><p>dele=
+te users:<br />conference_id<br />deleted_users</p><p>delete conference:<br=
+ />conference_id</p>
+    </body>
+</html>
+------=_Part_53_1232102824.1432287646894--

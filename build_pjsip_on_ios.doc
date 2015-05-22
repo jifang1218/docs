@@ -1,0 +1,130 @@
+Message-ID: <783405112.46.1432287622316.JavaMail.confluence@jira.easemob.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_45_2044672858.1432287622315"
+
+------=_Part_45_2044672858.1432287622315
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html>
+    <head>
+        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unles=
+s this meta tag is present -->
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Du=
+tf-8">
+        <title>build_pjsip_on_ios</title>
+        <style>
+            body, p, td, table, tr, .bodytext, .stepfield {
+=09            font-family: Arial, Helvetica, FreeSans, sans-serif;
+            }
+            .panel {
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #999;
+                background-color: #f0f0f0;
+            }
+            .noteMacro { border-style: solid; border-width: 1px; border-col=
+or: #F0C000; background-color: #FFFFCE; text-align:left;}
+            .warningMacro { border-style: solid; border-width: 1px; border-=
+color: #c00; background-color: #fcc; text-align:left;}
+            .infoMacro { border-style: solid; border-width: 1px; border-col=
+or: #69c; background-color: #D8E4F1; text-align:left;}
+            .tipMacro { border-style: solid; border-width: 1px; border-colo=
+r: #090; background-color: #dfd; text-align:left;}
+            .informationMacroPadding { padding: 5px 0 0 5px; }
+
+            table.infoMacro td, table.warningMacro td, table.tipMacro td, t=
+able.noteMacro td, table.sectionMacro td {
+                border: none;
+            }
+
+            .grid {
+                margin: 2px 0px 5px 0px;
+                border-collapse: collapse;
+            }
+            .grid th  {
+                border: 1px solid #ccc;
+                padding: 2px 4px 2px 4px;
+                background: #f0f0f0;
+                text-align: center;
+            }
+            .grid td  {
+                border: 1px solid #ccc;
+                padding: 3px 4px 3px 4px;
+            }           =20
+        </style>
+    </head>
+
+    <body style=3D"background-color: white; padding: 10px;">
+        <h1>build_pjsip_on_ios</h1>
+        <h3 id=3D"build_pjsip_on_ios-CompilingPJSIPforIOS%3A">Compiling=C2=
+=A0PJSIP=C2=A0for=C2=A0IOS=C2=A0:</h3><p class=3D"p0">To=C2=A0specify=C2=A0=
+the=C2=A0target=C2=A0platform=C2=A0is=C2=A0iOS,=C2=A0we=C2=A0need=C2=A0to=
+=C2=A0create=C2=A0a=C2=A0file:=C2=A0pjlib/include/pj/config_site.h,=C2=A0an=
+d=C2=A0set=C2=A0it=E2=80=99s=C2=A0content=C2=A0as:</p><p class=3D"p0">vim=
+=C2=A0pjlib/include/pj/config_site.h</p><p class=3D"p0">=C2=A0</p><p class=
+=3D"p0">#define=C2=A0PJ_CONFIG_MACOS=C2=A01</p><p class=3D"p0">#define=C2=
+=A0PJ_CONFIG_IPHONE=C2=A01</p><p class=3D"p0">//=C2=A0#define=C2=A0PJSIP_HA=
+S_TLS_TRANSPORT=C2=A01</p><p class=3D"p0">#include=C2=A0&lt;pj/config_site_=
+sample.h&gt;</p><p class=3D"p0">Now=C2=A0compile=C2=A0the=C2=A0pjproject=C2=
+=A0by=C2=A0using=C2=A0following=C2=A0commands.</p><p class=3D"p0"><strong><=
+span style=3D"font-size: 16.0px;line-height: 1.5625;">For=C2=A0ARMV7 Archit=
+ecture=C2=A0:</span></strong></p><p class=3D"p0">export DEVPATH=3D<span sty=
+le=3D"line-height: 1.4285715;">/Applications/Xcode.app/Contents/Developer/P=
+latforms/iPhoneOS.platform/Developer/</span></p><p class=3D"p0"><span style=
+=3D"line-height: 1.4285715;">export ARCH=3D'-arch=C2=A0armv7'=C2=A0</span><=
+/p><p class=3D"p0">make distclean &amp;&amp; make clean</p><p class=3D"p0">=
+./configure-iphone=C2=A0--enable-opus-codec</p><p class=3D"p0">make=C2=A0de=
+p</p><p class=3D"p0">make=C2=A0</p><p class=3D"p0">=C2=A0</p><p class=3D"p0=
+">Now=C2=A0we=C2=A0have=C2=A0.a=C2=A0files=C2=A0on=C2=A0different=C2=A0diff=
+erent=C2=A0folders=C2=A0of=C2=A0pjproject.</p><h3 id=3D"build_pjsip_on_ios-=
+ForARMV7SArchitecture%3A">For=C2=A0ARMV7S=C2=A0Architecture=C2=A0:</h3><p c=
+lass=3D"p0">export DEVPATH=3D<span>/Applications/Xcode.app/Contents/Develop=
+er/Platforms/iPhoneOS.platform/Developer/</span></p><p class=3D"p0"><span>=
+=C2=A0</span><span style=3D"line-height: 1.4285715;">export ARCH=3D'-arch=
+=C2=A0armv7s'=C2=A0</span></p><p class=3D"p0"><span style=3D"line-height: 1=
+.4285715;">make=C2=A0distclean=C2=A0&amp;&amp;=C2=A0make=C2=A0clean</span><=
+/p><p class=3D"p0">./configure-iphone=C2=A0--enable-opus-codec</p><p class=
+=3D"p0">make=C2=A0dep=C2=A0</p><p class=3D"p0">make</p><h3 id=3D"build_pjsi=
+p_on_ios-ForARM64Architecture%3A">For=C2=A0ARM64=C2=A0Architecture=C2=A0:</=
+h3><p>export DEVPATH=3D<span>/Applications/Xcode.app/Contents/Developer/Pla=
+tforms/iPhoneOS.platform/Developer/</span></p><p><span>export ARCH=3D'-arch=
+=C2=A0arm64'=C2=A0</span></p><p class=3D"p0">make=C2=A0distclean=C2=A0&amp;=
+&amp;=C2=A0make=C2=A0clean</p><p class=3D"p0">./configure-iphone=C2=A0--ena=
+ble-opus-codec</p><p class=3D"p0">make=C2=A0dep=C2=A0</p><p class=3D"p0">ma=
+ke</p><h3 id=3D"build_pjsip_on_ios-Tocompilei386architecture%3A">To=C2=A0co=
+mpile=C2=A0i386=C2=A0architecture=C2=A0:</h3><p class=3D"p0">export=C2=A0DE=
+VPATH=3D/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulato=
+r.platform/Developer/</p><p class=3D"p0">export=C2=A0ARCH=3D&quot;-arch=C2=
+=A0i386&quot;=C2=A0CFLAGS=3D&quot;-O2=C2=A0-m32=C2=A0-mios-simulator-versio=
+n-min=3D5.0&quot;=C2=A0LDFLAGS=3D&quot;-O2=C2=A0-m32=C2=A0-mios-simulator-v=
+ersion-min=3D5.0&quot;</p><p class=3D"p0">make=C2=A0distclean &amp;&amp;=C2=
+=A0<span style=3D"line-height: 1.4285715;">make=C2=A0clean</span></p><p cla=
+ss=3D"p0">./configure-iphone=C2=A0--enable-opus-codec</p><p class=3D"p0">ma=
+ke=C2=A0dep</p><p class=3D"p0">make</p><p class=3D"p0">=C2=A0</p><p class=
+=3D"p0">Note=C2=A0:=C2=A0Do=C2=A0not=C2=A0use=C2=A0make=C2=A0clean=C2=A0and=
+=C2=A0make=C2=A0distclean=C2=A0after=C2=A0two=C2=A0export=C2=A0functions..=
+=C2=A0clean=C2=A0may=C2=A0removes=C2=A0devpath=C2=A0and=C2=A0architecture=
+=C2=A0it=C2=A0will=C2=A0result=C2=A0it=C2=A0to=C2=A0error=C2=A0or=C2=A0defa=
+ult=C2=A0architecture=C2=A0compilation.</p><h3 id=3D"build_pjsip_on_ios-Toc=
+ompilex86_64architecture%3A">To=C2=A0compile=C2=A0x86_64=C2=A0architecture=
+=C2=A0:</h3><p class=3D"p0">export=C2=A0DEVPATH=3D/Applications/Xcode.app/C=
+ontents/Developer/Platforms/iPhoneSimulator.platform/Developer/</p><p class=
+=3D"p0">export=C2=A0ARCH=3D&quot;-arch=C2=A0x86_64&quot;=C2=A0CFLAGS=3D&quo=
+t;-O2=C2=A0-m32=C2=A0-mios-simulator-version-min=3D5.0&quot;=C2=A0LDFLAGS=
+=3D&quot;-O2=C2=A0-m32=C2=A0-mios-simulator-version-min=3D5.0&quot;</p><p c=
+lass=3D"p0">make=C2=A0distclean &amp;&amp;=C2=A0<span style=3D"line-height:=
+ 1.4285715;">make=C2=A0clean</span></p><p class=3D"p0">./configure-iphone=
+=C2=A0--enable-opus-codec</p><p class=3D"p0">make=C2=A0dep</p><p class=3D"p=
+0">make</p><p class=3D"p0">=C2=A0</p><p class=3D"p0">Note=C2=A0:=C2=A0Do=C2=
+=A0not=C2=A0use=C2=A0make=C2=A0clean=C2=A0and=C2=A0make=C2=A0distclean=C2=
+=A0after=C2=A0two=C2=A0export=C2=A0functions..=C2=A0clean=C2=A0may=C2=A0rem=
+oves=C2=A0devpath=C2=A0and=C2=A0architecture=C2=A0it=C2=A0will=C2=A0result=
+=C2=A0it=C2=A0to=C2=A0error=C2=A0or=C2=A0default=C2=A0architecture=C2=A0com=
+pilation.</p>
+    </body>
+</html>
+------=_Part_45_2044672858.1432287622315--

@@ -1,0 +1,96 @@
+Message-ID: <1487250700.60.1432287686265.JavaMail.confluence@jira.easemob.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_59_1040545403.1432287686264"
+
+------=_Part_59_1040545403.1432287686264
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html>
+    <head>
+        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unles=
+s this meta tag is present -->
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Du=
+tf-8">
+        <title>build_berkeley_db_on_mac</title>
+        <style>
+            body, p, td, table, tr, .bodytext, .stepfield {
+=09            font-family: Arial, Helvetica, FreeSans, sans-serif;
+            }
+            .panel {
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #999;
+                background-color: #f0f0f0;
+            }
+            .noteMacro { border-style: solid; border-width: 1px; border-col=
+or: #F0C000; background-color: #FFFFCE; text-align:left;}
+            .warningMacro { border-style: solid; border-width: 1px; border-=
+color: #c00; background-color: #fcc; text-align:left;}
+            .infoMacro { border-style: solid; border-width: 1px; border-col=
+or: #69c; background-color: #D8E4F1; text-align:left;}
+            .tipMacro { border-style: solid; border-width: 1px; border-colo=
+r: #090; background-color: #dfd; text-align:left;}
+            .informationMacroPadding { padding: 5px 0 0 5px; }
+
+            table.infoMacro td, table.warningMacro td, table.tipMacro td, t=
+able.noteMacro td, table.sectionMacro td {
+                border: none;
+            }
+
+            .grid {
+                margin: 2px 0px 5px 0px;
+                border-collapse: collapse;
+            }
+            .grid th  {
+                border: 1px solid #ccc;
+                padding: 2px 4px 2px 4px;
+                background: #f0f0f0;
+                text-align: center;
+            }
+            .grid td  {
+                border: 1px solid #ccc;
+                padding: 3px 4px 3px 4px;
+            }           =20
+        </style>
+    </head>
+
+    <body style=3D"background-color: white; padding: 10px;">
+        <h1>build_berkeley_db_on_mac</h1>
+        <p>os-x-berkeleydb-patch<br />Xcode 4.6 throws an error when compil=
+ing berkeley db 5.3.21, so here's a patch. <br /><br />When compiling, I go=
+t this error:<br /><a rel=3D"nofollow">{bmcduffi@breezy.local</a>}{Tue Mar =
+12 12:49:44}{~/src/db-5.3.21/build_unix}<br />$ make<br />./libtool --mode=
+=3Dcompile cc -c -I. -I../src=C2=A0 -O3=C2=A0 ../src/mutex/mut_tas.c<br />l=
+ibtool: compile:=C2=A0 cc -c -I. -I../src -O3 ../src/mutex/mut_tas.c=C2=A0 =
+-fno-common -DPIC -o .libs/mut_tas.o<br />In file included from ../src/mute=
+x/mut_tas.c:11:<br />In file included from ./db_int.h:1113:<br />In file in=
+cluded from ../src/dbinc/mutex.h:15:<br />In file included from ../src/dbin=
+c/mutex_int.h:12:<br />../src/dbinc/atomic.h:179:19: error: definition of b=
+uiltin function '__atomic_compare_exchange'<br />static inline int __atomic=
+_compare_exchange(<br />=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ^<br />1 error ge=
+nerated.<br />make: *** [mut_tas.lo] Error 1</p><p>------------------------=
+-------------------------------- SOLUTION ---------------------------------=
+--------------------------------------------------</p><p>I'm sure there are=
+ more elegant ways to patch this, but here are my steps:<br /><br />curl -O=
+ <a href=3D"http://download.oracle.com/berkeley-db/db-5.3.21.tar.gz" class=
+=3D"external-link" rel=3D"nofollow">http://download.oracle.com/berkeley-db/=
+db-5.3.21.tar.gz</a><br />tar -xvf db-5.3.21.tar.gz<br />cd db-5.3.21/<br /=
+>We need to patch the code to make it compile on Xcode 4.6=C2=A0=C2=A0 =E2=
+=80=93 (this can be skipped if you've got source code). <br /><br />curl -O=
+L <a href=3D"https://raw.github.com/narkoleptik/os-x-berkeleydb-patch/maste=
+r/atomic.patch" class=3D"external-link" rel=3D"nofollow">https://raw.github=
+.com/narkoleptik/os-x-berkeleydb-patch/master/atomic.patch</a><br />patch s=
+rc/dbinc/atomic.h &lt; atomic.patch<br />Back to building BerkeleyDB<br /><=
+br />cd build_unix<br />../dist/configure --prefix=3D/Users/bmcduffi<br />m=
+ake<br />make install</p><p>-----------------------------------------------=
+-- NOTES-------------------------------------------------</p><p><a href=3D"=
+attach_84cbfe48a0f8eb090f5ce52d843c3171">patch</a> was attached.</p><p>to b=
+uild C++ lib, ./configure --enable-cxx</p>
+    </body>
+</html>
+------=_Part_59_1040545403.1432287686264--

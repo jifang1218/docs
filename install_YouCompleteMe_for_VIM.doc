@@ -1,0 +1,83 @@
+Message-ID: <897641196.48.1432287628937.JavaMail.confluence@jira.easemob.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_47_384139554.1432287628936"
+
+------=_Part_47_384139554.1432287628936
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html>
+    <head>
+        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unles=
+s this meta tag is present -->
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Du=
+tf-8">
+        <title>install_YouCompleteMe_for_VIM</title>
+        <style>
+            body, p, td, table, tr, .bodytext, .stepfield {
+=09            font-family: Arial, Helvetica, FreeSans, sans-serif;
+            }
+            .panel {
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid #999;
+                background-color: #f0f0f0;
+            }
+            .noteMacro { border-style: solid; border-width: 1px; border-col=
+or: #F0C000; background-color: #FFFFCE; text-align:left;}
+            .warningMacro { border-style: solid; border-width: 1px; border-=
+color: #c00; background-color: #fcc; text-align:left;}
+            .infoMacro { border-style: solid; border-width: 1px; border-col=
+or: #69c; background-color: #D8E4F1; text-align:left;}
+            .tipMacro { border-style: solid; border-width: 1px; border-colo=
+r: #090; background-color: #dfd; text-align:left;}
+            .informationMacroPadding { padding: 5px 0 0 5px; }
+
+            table.infoMacro td, table.warningMacro td, table.tipMacro td, t=
+able.noteMacro td, table.sectionMacro td {
+                border: none;
+            }
+
+            .grid {
+                margin: 2px 0px 5px 0px;
+                border-collapse: collapse;
+            }
+            .grid th  {
+                border: 1px solid #ccc;
+                padding: 2px 4px 2px 4px;
+                background: #f0f0f0;
+                text-align: center;
+            }
+            .grid td  {
+                border: 1px solid #ccc;
+                padding: 3px 4px 3px 4px;
+            }           =20
+        </style>
+    </head>
+
+    <body style=3D"background-color: white; padding: 10px;">
+        <h1>install_YouCompleteMe_for_VIM</h1>
+        <p>1.python:<br />sudo apt-get install python python3 python-dev py=
+thon3-dev</p><p>2.ncurses:<br />s<span style=3D"line-height: 1.4285715;">ud=
+o apt-get install libncurses5 libncurses5-dev</span></p><p>3.Build vim:<br =
+/>./configure --with-features=3Dhuge --enable-pythoninterp --enable-python3=
+interp --enable-luainterp --enable-multibyte --enable-sniff --enable-fontse=
+t<br />Notes:<br />check if you really need to do so. In vim, :echo has('py=
+thon') return 1 means your current vim supports python, otherwise you need =
+to build vim from scratch. =C2=A0</p><p><span style=3D"line-height: 1.42857=
+15;">4.vundle:<br /></span><span style=3D"line-height: 1.4285715;">git clon=
+e </span><a href=3D"https://github.com/gmarik/vundle.git" style=3D"line-hei=
+ght: 1.4285715;" class=3D"external-link" rel=3D"nofollow">https://github.co=
+m/gmarik/vundle.git</a><span style=3D"line-height: 1.4285715;"> ~/.vim/bund=
+le/vundle</span></p><p><span style=3D"line-height: 1.4285715;">5.llvm-clang=
+:<br />please refer to =C2=A0<a href=3D"/display/TECH/install_llvm-clang_on=
+_linux">install_llvm-clang_on_linux</a></span></p><p>6. build YouCompleteMe=
+<br />cd ~/.vim/bundle/YouCompleteMe<br />./install.sh --clang-completer --=
+omnisharp-completer<br />Notes:<br />--omnisharp is used for c#, not used f=
+or linux.=C2=A0</p>
+    </body>
+</html>
+------=_Part_47_384139554.1432287628936--
