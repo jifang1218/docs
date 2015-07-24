@@ -1,0 +1,65 @@
+﻿这里只讨论那些需要通过configure配置的情况，针对arm来。
+
+先下载最新的gdb7.5
+
+下载后解压，再
+
+cd gdb-7.5
+
+如我的本机路径现在进入到了/home/rebi/Downloads/gdb-7.5
+
+执行./configure配置：
+
+./configure --prefix=/home/rebi/Downloads/gdb-7.5/bin --host=arm-linuxCC=arm-none-linux-gnueabi-gccAR=arm-none-linux-gnueabi-ar --with-lib-path=/home/rebi/arm-2011.03/bin
+
+重点就是这面一步，这里实际上是最关键的是三点：
+
+1、prefix指定程序后续的安装路径，如我喜欢把它装在当前源码的bin目录下。
+
+2、host指定了目录，编要在arm上跑的就使用arm-linux，如果是mips就应该是mipsel-linux
+
+3、CC参数指定的编译器的命字。这里我使用的是arm-none-linux-gnueabi-gcc，因为我已经把交叉编译器可执行所在的目录加入PATH了，所以不需要指定全路径了，如果没有加需要指定全路径。
+
+实际上，上面的例子中，只把--host改成--host=arm-none-linux-gnueabi后面的CC、AR变量都可以不用指定了，这里的--host的值就是你实际使用的交叉编译器的前缀，注意后面不带“-”。即：
+
+./configure --prefix=/home/rebi/Downloads/gdb-7.5/bin --host=arm-none-linux-gnueabi
+
+上面这三步基本上就是死套路，按这个来一般不会有错。
+
+另外，如果你编译的是gcc或binutils则不需要指定host，而是需要指定--target=arm-linux。
+
+
+需要注意的一点是，这里编译的是gdb7.5，由于版本太新，所以编译时会出现如下错误：
+
+configure: WARNING: no enhanced curses library found; disabling TUI
+checking for library containing tgetent... no
+configure: error: no termcap library found
+make[1]: *** [configure-gdb] Error 1
+
+即没有这个termcap库。网上流传的其它方法如sudo apt-get install libncurses5-dev经过我确认不行。
+
+解决这个问题需要自己去新下载一套ncurses的最新代码，重新交叉编译出来，再拷到交叉gcc的库默认搜索路径下去就能解决。
+
+wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.8.tar.gz
+
+tar xvf ncurses-5.8.tar.gz
+
+cd ncurses-5.8
+
+./configure --prefix=/home/rebi/Downloads/ncurses-5.8/bin --host=arm-linux CC=arm-none-linux-gnueabi-gcc
+
+make&&make install
+
+cd bin
+
+cp -rf lib/* /home/rebi/arm-2011.03/bin/../arm-none-linux-gnueabi/libc/usr/lib/
+
+cp -rf include/* /home/rebi/arm-2011.03/bin/../arm-none-linux-gnueabi/libc/usr/include
+
+上面的动作执行完再重make gdb即可。
+
+注意上面的gcc的库路径可以通过arm-none-linux-gnueabi-gcc -print-file-name=libc.a命令来获取：
+
+rebi@ubuntu:~/Downloads/ncurses-5.8$ arm-none-linux-gnueabi-gcc -print-file-name=libc.a
+/home/rebi/arm-2011.03/bin/../arm-none-linux-gnueabi/libc/usr/lib/libc.a
+rebi@ubuntu:~/Downloads/ncurses-5.8$
