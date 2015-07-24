@@ -1,4 +1,4 @@
-﻿这里只讨论那些需要通过configure配置的情况，针对arm来。
+这里只讨论那些需要通过configure配置的情况，针对arm来。
 
 先下载最新的gdb7.5
 
@@ -10,7 +10,7 @@ cd gdb-7.5
 
 执行./configure配置：
 
-./configure --prefix=/home/rebi/Downloads/gdb-7.5/bin --host=arm-linuxCC=arm-none-linux-gnueabi-gccAR=arm-none-linux-gnueabi-ar --with-lib-path=/home/rebi/arm-2011.03/bin
+./configure --prefix=/home/rebi/Downloads/gdb-7.5/bin --host=arm-linux CC=arm-none-linux-gnueabi-gcc AR=arm-none-linux-gnueabi-ar --with-lib-path=/home/rebi/arm-2011.03/bin
 
 重点就是这面一步，这里实际上是最关键的是三点：
 
