@@ -1,1 +1,64 @@
-install_vmwaretools_on_ubuntu_serverInstall VMWare Tools Ubuntu Server ubuntu server安装的时候要你新建一个用户，安装完成后，你需要手动开启root。  $ sudo passwd root     输入你当前用户的密码     输入你希望的root用户的密码     确认密码  ubuntu用户管理      root 用户为根用户，也就是 系统管理员 拥有全部权限     一个用户只能拥有一个 GID ，但是还可以归属于其它附加群组  用户管理的重要配置文件：     /etc/passwd 用户名 密码位 UID 归属GID 姓名 $HOME目录 登录Shell/etc/shadow 用户名 已加密密码密码改动信息 密码策略/etc/group 群组名 密码位 GID 组内用户/etc/gshadow 群组密码相关文件，不重要/etc/sudoers 用户名 权限定义 权限[/pre]可以使用 pwconv 命令创建影子密码，将 /etc/passwd 文件中的密码转换到 /etc/shadow 文件  Note: I have tested this on VMWare workstation 7.0 and Ubuntu 9.10, 10.04, 10.10, 11.04 and 11.10 is also works on Lubuntu and Xubuntu. Once you have Ubuntu server installed run the following commands.  #Change to super user  sudo su     #Update your sources  apt-get update     #Upgrade your installed packages and force kernel upgrade  apt-get dist-upgrade  ###  #  Now reboot  ###  reboot     #back to super user  sudo su     #Install Build tools  apt-get install linux-headers-server build-essential     ###  #  Now you are ready to install VMWare tools.  ###  #Mount the VMWare Tools CD ISO (make sure you have told VMWare you want to install tools)  mkdir /mnt/cdrom   mount /dev/cdrom /mnt/cdrom     #Copy VMware Tools  cp /mnt/cdrom/VMwareTools-x.x.x-xxxxx.tar.gz /tmp     #Go tmp  cd /tmp     #Extract  tar -zxf VMwareTools-x.x.x-xxxxx.tar.gz     #Change to extracted directory  cd vmware-tools-distrib     #Start the installer  ./vmware-install.pl -d   The default settings have always worked for me (within a vm) so I use the -d option. If you need a different configuration don't use the -d.  Using Shared folders After a reboot you can use tools such as Shared folders. I like to sym link my shared folders to my home directory as I tend to forget the mount directory (hgfs) location. #sym link and name vmSharedFolder  ln -s /mnt/hgfs/ ~/vmSharedFolder   Please note that if you use VMWare work station you can find all this in the help. When I wrote this I was using player, which at the time didn't include this in the help.
+install_vmwaretools_on_ubuntu_server
+Install VMWare Tools Ubuntu Server
+ ubuntu server安装的时候要你新建一个用户，安装完成后，你需要手动开启root。 
+ $ sudo passwd root 
+    输入你当前用户的密码 
+    输入你希望的root用户的密码 
+    确认密码 
+ ubuntu用户管理 
+     root 用户为根用户，也就是 系统管理员 拥有全部权限 
+    一个用户只能拥有一个 GID ，但是还可以归属于其它附加群组 
+ 用户管理的重要配置文件： 
+    /etc/passwd 用户名 密码位 UID 归属GID 姓名 $HOME目录 登录Shell/etc/shadow 用户名 已加密密码密码改动信息 密码策略/etc/group 群组名 密码位 GID 组内用户/etc/gshadow 群组密码相关文件，不重要/etc/sudoers 用户名 权限定义 权限[/pre]可以使用 pwconv 命令创建影子密码，将 /etc/passwd 文件中的密码转换到 /etc/shadow 文件 
+ Note: I have tested this on VMWare workstation 7.0 and Ubuntu 9.10, 10.04, 10.10, 11.04 and 11.10 is also works on Lubuntu and Xubuntu. Once you have Ubuntu server installed run the following commands. 
+ 
+#Change to super user  
+sudo su  
+   
+#Update your sources  
+apt-get update  
+   
+#Upgrade your installed packages and force kernel upgrade  
+apt-get dist-upgrade  
+###  
+#  Now reboot  
+###  
+reboot  
+   
+#back to super user  
+sudo su  
+   
+#Install Build tools  
+apt-get install linux-headers-server build-essential  
+   
+###  
+#  Now you are ready to install VMWare tools.  
+###  
+#Mount the VMWare Tools CD ISO (make sure you have told VMWare you want to install tools)  
+mkdir /mnt/cdrom   
+mount /dev/cdrom /mnt/cdrom  
+   
+#Copy VMware Tools  
+cp /mnt/cdrom/VMwareTools-x.x.x-xxxxx.tar.gz /tmp  
+   
+#Go tmp  
+cd /tmp  
+   
+#Extract  
+tar -zxf VMwareTools-x.x.x-xxxxx.tar.gz  
+   
+#Change to extracted directory  
+cd vmware-tools-distrib  
+   
+#Start the installer  
+./vmware-install.pl -d  
+ 
+The default settings have always worked for me (within a vm) so I use the -d option. If you need a different configuration don't use the -d. 
+ 
+Using Shared folders 
+After a reboot you can use tools such as Shared folders. I like to sym link my shared folders to my home directory as I tend to forget the mount directory (hgfs) location. 
+#sym link and name vmSharedFolder  
+ln -s /mnt/hgfs/ ~/vmSharedFolder  
+ 
+Please note that if you use VMWare work station you can find all this in the help. When I wrote this I was using player, which at the time didn't include this in the help.
+

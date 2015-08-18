@@ -1,1 +1,51 @@
-install_llvm-clang_on_linux1、编译安装llvm-clang下载最新的LLVM、clang 及辅助库源码可用:cd ~/llvm-clang svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm cd llvm/tools svn co http://llvm.org/svn/llvm-project/cfe/trunk clang cd ../.. cd llvm/tools/clang/tools svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra cd ../../../.. cd llvm/projects svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt cd .. 返回~/llvm-clang目录，并新建一个目录llvm-build专门用于编译llvm-clang，使得不污染源码。mkdir llvm-build cd llvm-build/ ../llvm/configure --enable-optimized --enable-targets=host-only --prefix=/usr/clang 建立编译环境此种配置后，其中--prefix指定llvm-clang安装目录输入 make -j4 // 开始编译 sudo make install //进行安装 如要卸载则在该目录下输入sudo make uninstall 安装好后，输入 clang -v //查看版本信息： 2、安装clang标准库clang 的标准库————libc++(接口层)和 libc++abi(实现层)需要安装头文件和动态链接库(*.so)。安装libc++cd ~/llvm-clang svn co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx cd libcxx/lib ./buildit 头文件已经生成到 ~/llvm-clang/libcxx/include/,要让 clang 找到必须复制到 /usr/include/c++/v1/sudo cp -r ~/llvm-clang/libcxx/include/ /usr/include/c++/v1/ *.so 文件已生成 ~/llvm-clang/libcxx/lib/libc++.so.1.0,要让 clang 访问必须复 制到 /usr/lib/,并创建软链接ln -s ~/llvm-clang/libcxx/lib/libc++.so.1.0 ~/llvm-clang/libcxx/lib/libc++.so.1 ln -s ~/llvm-clang/libcxx/lib/libc++.so.1.0 ~/llvm-clang/libcxx/lib/libc++.so sudo cp ~/llvm-clang/libcxx/lib/libc++.so* /usr/lib/ 类似,源码安装 libc++abi 的头文件和动态链接库:cd ~/llvm-clang/ svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi cd libcxxabi/lib ./buildit 头文件已经生成到 ~/llvm-clang/libcxxabi/include/,要让 clang 找到必须复制到 /usr/include/c++/v1/sudo cp -r ~/llvm-clang/libcxxabi/include/ /usr/include/c++/v1/ *.so 文件已生成 ~/llvm-clang/libcxx/lib/libc++abi.so.1.0,要让 clang 访问必 须复制到 /usr/lib/,并创建软链接ln -s ~/llvm-clang/libcxxabi/lib/libc++abi.so.1.0 ~/llvm-clang/libcxxabi/lib/libc++abi.so.1 ln -s ~/llvm-clang/libcxxabi/lib/libc++abi.so.1.0 ~/llvm-clang/libcxxabi/lib/libc++abi.so sudo cp ~/llvm-clang/libcxxabi/lib/libc++abi.so* /usr/lib/
+install_llvm-clang_on_linux
+1、编译安装llvm-clang
+下载最新的LLVM、clang 及辅助库源码可用:
+cd ~/llvm-clang 
+svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm 
+cd llvm/tools 
+svn co http://llvm.org/svn/llvm-project/cfe/trunk clang 
+cd ../.. 
+cd llvm/tools/clang/tools 
+svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra 
+cd ../../../.. 
+cd llvm/projects 
+svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt 
+cd .. 
+返回~/llvm-clang目录，并新建一个目录llvm-build专门用于编译llvm-clang，使得不污染源码。
+mkdir llvm-build 
+cd llvm-build/ 
+../llvm/configure --enable-optimized --enable-targets=host-only --prefix=/usr/clang 
+建立编译环境
+此种配置后，其中--prefix指定llvm-clang安装目录
+输入 
+make -j4 // 开始编译 sudo make install //进行安装 
+如要卸载则在该目录下输入
+sudo make uninstall 
+安装好后，输入 
+clang -v //查看版本信息： 
+2、安装clang标准库
+clang 的标准库————libc++(接口层)和 libc++abi(实现层)需要安装头文件和动态链接库(*.so)。
+安装libc++
+cd ~/llvm-clang 
+svn co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx 
+cd libcxx/lib 
+./buildit 
+头文件已经生成到 ~/llvm-clang/libcxx/include/,要让 clang 找到必须复制到 /usr/include/c++/v1/
+sudo cp -r ~/llvm-clang/libcxx/include/ /usr/include/c++/v1/ 
+*.so 文件已生成 ~/llvm-clang/libcxx/lib/libc++.so.1.0,要让 clang 访问必须复 制到 /usr/lib/,并创建软链接
+ln -s ~/llvm-clang/libcxx/lib/libc++.so.1.0 ~/llvm-clang/libcxx/lib/libc++.so.1 
+ln -s ~/llvm-clang/libcxx/lib/libc++.so.1.0 ~/llvm-clang/libcxx/lib/libc++.so 
+sudo cp ~/llvm-clang/libcxx/lib/libc++.so* /usr/lib/ 
+类似,源码安装 libc++abi 的头文件和动态链接库:
+cd ~/llvm-clang/ 
+svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi 
+cd libcxxabi/lib 
+./buildit 
+头文件已经生成到 ~/llvm-clang/libcxxabi/include/,要让 clang 找到必须复制到 /usr/include/c++/v1/
+sudo cp -r ~/llvm-clang/libcxxabi/include/ /usr/include/c++/v1/ 
+*.so 文件已生成 ~/llvm-clang/libcxx/lib/libc++abi.so.1.0,要让 clang 访问必 须复制到 /usr/lib/,并创建软链接
+ln -s ~/llvm-clang/libcxxabi/lib/libc++abi.so.1.0 ~/llvm-clang/libcxxabi/lib/libc++abi.so.1 
+ln -s ~/llvm-clang/libcxxabi/lib/libc++abi.so.1.0 ~/llvm-clang/libcxxabi/lib/libc++abi.so 
+sudo cp ~/llvm-clang/libcxxabi/lib/libc++abi.so* /usr/lib/
+

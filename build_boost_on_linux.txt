@@ -1,1 +1,11 @@
-build_boost_on_linuxsudo apt-get install mpi-default-devsudo apt-get install libicu-devsudo apt-get install python-devsudo apt-get install libbz2-dev./bootstrap.sh./b2sudo ./b2 install=================================================package names maybe different on various platforms.
+build_boost_on_linux
+sudo apt-get install mpi-default-dev
+sudo apt-get install libicu-dev
+sudo apt-get install python-dev
+sudo apt-get install libbz2-dev
+./bootstrap.sh
+./b2
+sudo ./b2 install
+=================================================
+package names maybe different on various platforms.
+

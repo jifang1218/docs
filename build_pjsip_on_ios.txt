@@ -1,1 +1,52 @@
-build_pjsip_on_iosCompiling PJSIP for IOS :To specify the target platform is iOS, we need to create a file: pjlib/include/pj/config_site.h, and set it’s content as:vim pjlib/include/pj/config_site.h #define PJ_CONFIG_MACOS 1#define PJ_CONFIG_IPHONE 1// #define PJSIP_HAS_TLS_TRANSPORT 1#include <pj/config_site_sample.h>Now compile the pjproject by using following commands.For ARMV7 Architecture :export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/export ARCH='-arch armv7' make distclean && make clean./configure-iphone --enable-opus-codecmake depmake  Now we have .a files on different different folders of pjproject.For ARMV7S Architecture :export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/ export ARCH='-arch armv7s' make distclean && make clean./configure-iphone --enable-opus-codecmake dep makeFor ARM64 Architecture :export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/export ARCH='-arch arm64' make distclean && make clean./configure-iphone --enable-opus-codecmake dep makeTo compile i386 architecture :export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/export ARCH="-arch i386" CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0" LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"make distclean && make clean./configure-iphone --enable-opus-codecmake depmake Note : Do not use make clean and make distclean after two export functions.. clean may removes devpath and architecture it will result it to error or default architecture compilation.To compile x86_64 architecture :export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/export ARCH="-arch x86_64" CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0" LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"make distclean && make clean./configure-iphone --enable-opus-codecmake depmake Note : Do not use make clean and make distclean after two export functions.. clean may removes devpath and architecture it will result it to error or default architecture compilation.
+build_pjsip_on_ios
+Compiling PJSIP for IOS :
+To specify the target platform is iOS, we need to create a file: pjlib/include/pj/config_site.h, and set it’s content as:
+vim pjlib/include/pj/config_site.h
+ 
+#define PJ_CONFIG_MACOS 1
+#define PJ_CONFIG_IPHONE 1
+// #define PJSIP_HAS_TLS_TRANSPORT 1
+#include <pj/config_site_sample.h>
+Now compile the pjproject by using following commands.
+For ARMV7 Architecture :
+export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/
+export ARCH='-arch armv7' 
+make distclean && make clean
+./configure-iphone --enable-opus-codec
+make dep
+make 
+ 
+Now we have .a files on different different folders of pjproject.
+For ARMV7S Architecture :
+export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/
+ export ARCH='-arch armv7s' 
+make distclean && make clean
+./configure-iphone --enable-opus-codec
+make dep 
+make
+For ARM64 Architecture :
+export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/
+export ARCH='-arch arm64' 
+make distclean && make clean
+./configure-iphone --enable-opus-codec
+make dep 
+make
+To compile i386 architecture :
+export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/
+export ARCH="-arch i386" CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0" LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"
+make distclean && make clean
+./configure-iphone --enable-opus-codec
+make dep
+make
+ 
+Note : Do not use make clean and make distclean after two export functions.. clean may removes devpath and architecture it will result it to error or default architecture compilation.
+To compile x86_64 architecture :
+export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/
+export ARCH="-arch x86_64" CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0" LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"
+make distclean && make clean
+./configure-iphone --enable-opus-codec
+make dep
+make
+ 
+Note : Do not use make clean and make distclean after two export functions.. clean may removes devpath and architecture it will result it to error or default architecture compilation.
+
