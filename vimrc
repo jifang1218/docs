@@ -58,6 +58,7 @@ let g:ycm_confirm_extra_conf=1
 let g:ycm_error_symbol='E'
 let g:ycm_warning_symbol='W'
 
+" copy from https://github.com/M-Kepler/KeplerVim/blob/master/vimrc
 " title add title and update title are used by title function.
 function AddVimrcTitle()
 	call append(0,"\" ***********************************************************")
