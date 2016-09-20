@@ -52,7 +52,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 let mapleader=","
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
-let g:ycm_confirm_extra_conf=1
+let g:ycm_confirm_extra_conf=0
 "let g:ycm_error_symbol='>>'
 "let g:ycm_warning_symbol='>*'
 let g:ycm_error_symbol='E'
@@ -60,48 +60,28 @@ let g:ycm_warning_symbol='W'
 
 " copy from https://github.com/M-Kepler/KeplerVim/blob/master/vimrc
 " title add title and update title are used by title function.
-function AddVimrcTitle()
-	call append(0,"\" ***********************************************************")
-	call append(1,"\" * Author       : Ji Fang")
-	call append(2,"\" * EMail        :jifang1218@hotmail.com")
-	call append(3,"\" * Last modified:".strftime("%Y-%m-%d %H:%M:%S"))
-	call append(4,"\" * Filename     :".expand("%:t"))
-	call append(5,"\" * Description  :")
-	call append(6,"\" ***********************************************************")
-	call append(7,"")
-    echohl WarningMsg | echo "Successful in adding the copyright."|echohl None
-endfunction
-
-function AddCommonTitle()
+function AddTitle()
 	call append(0,"/***********************************************************")
 	call append(1,"* Author       : Ji Fang")
-	call append(2,"* EMail        :jifang1218@hotmail.com")
-	call append(3,"* Last modified:".strftime("%Y-%m-%d %H:%M:%S"))
-	call append(4,"* Filename     :".expand("%:t"))
+	call append(2,"* EMail        : jifang1218@hotmail.com")
+	call append(3,"* Last modified: ".strftime("%Y-%m-%d %H:%M:%S"))
+	call append(4,"* Filename     : ".expand("%:t"))
 	call append(5,"* Description  :")
 	call append(6,"**********************************************************/")
 	call append(7,"")
-    echohl WarningMsg | echo "Successful in adding the copyright."|echohl None
+    echohl WarningMsg | echo "Copyright added."|echohl None
 endfunction
 
 " update latest modified time & name
 function UpdateTitle()
 	normal m'
-	if .expand("%:t") =~'^\*\s*\Svimrc\S*.*$'
-		execute '\" Last modified:/s@:.*$@\=strftime(": %Y-%m-%d%H:%M:%S")@'
-	else 
-		execute '/* Last modified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M:%S")@'
-	endif
+	execute '/* Last modified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M:%S")@'
 	normal ''
 	normal mk
-	if .expand("%:t") =~'^\*\s*\Svimrc\S*.*$'
-		execute '\" Filename     :/s@:.*$@\=": ".expand("%:t")@'
-	else
-		execute '/* Filename     :/s@:.*$@\=": ".expand("%:t")@'
-	endif
+	execute '/* Filename     :/s@:.*$@\=": ".expand("%:t")@'
 	execute "noh"
 	normal 'k
-	echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+	echohl WarningMsg | echo "Copyright updated." | echohl None
 endfunction
 
 " 判断前10行代码里，是否有Last modified
@@ -115,11 +95,7 @@ function Title()
 		endif
 		let n = n + 1
 	endwhile
-	if .expand("%:t") =~'^\Svimrc\S*.*$'
-		call AddVimrcTitle()
-	else
-		call AddCommonTitle()
-	endif
+	call AddTitle()
 endfunction
 
-map <C-i> :call Title() <cr>'s
+map <C-i> :call Title() <cr>
