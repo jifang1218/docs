@@ -43,7 +43,7 @@ flags = [
 '-Wno-variadic-macros',
 '-fexceptions',
 '-DNDEBUG',
-'-stdlib=libc++',
+#'-stdlib=libc++',
 # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
 # source code needs it.
 '-DUSE_CLANG_COMPLETER',
@@ -63,9 +63,13 @@ flags = [
 '-isystem',
 '../BoostParts',
 '-isystem',
+'/usr/include',
+'-isystem',
+'/usr/include/c++/5',
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
-'/System/Library/Frameworks/Python.framework/Headers',
+#'-isystem',
+#'/System/Library/Frameworks/Python.framework/Headers',
 '-isystem',
 '../llvm/include',
 '-isystem',
@@ -86,13 +90,13 @@ flags = [
 '/usr/include',
 '-isystem',
 '/usr/local/include',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
-'-isystem', 
+#'-isystem',
+#'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
+#'-isystem',
+#'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+#'-isystem', 
 # should be synchronized with latest sdk. 
-'/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include',
+#'/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include',
 ]
 
 
