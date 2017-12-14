@@ -1,0 +1,8 @@
+1. find your wifi name:
+ifconfig --> wls3/wan0
+
+2. scan:
+sudo iwlist wls3 scanning|more   --> take note for the ESSID as ${ESSID_NAME}, ${ESSID_PASSWD}
+
+3. sudo iwconfig wls3 essid ${ESSID_NAME}
+sudo iwconfig wls3 key s:${ESSID_PASSWD}
