@@ -1,0 +1,8 @@
+sudo apt update
+sudo apt install xorg
+sudo apt install lxde
+
+====  optional ====
+for pixel desktop environment support:
+sudo apt install pix-icons pix-plum-splash pixel-wallpaper
+sudo apt install raspberrypi-ui-mods
