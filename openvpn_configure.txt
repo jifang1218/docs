@@ -1,0 +1,21 @@
+prerequisites:
+1. resolvconf / openresolv to manage /etc/resolv.conf;
+2. tinyproxy / squid3 / privoxy as a http proxy.
+
+steps:
+1. get ovpn file (tcp is prefered) from vpngate website;
+
+2. add the following 3 lines at the tail of each ovpn file(it is used to update dns during the connection):
+script-security 2
+up /etc/openvpn/update-resolv-conf
+down /etc/openvpn/update-resolv-conf
+
+3. connect command(can use --daemon to get rid of terminal):
+nohup sudo openvpn --config vpngate_219.100.37.122_tcp_443.ovpn --remote-cert-tls server --tcp-queue-limit 512 &
+
+4. disconnect command:
+sudo killall -SIGINT openvpn
+
+browser:
+use SwitchyOmega plugin in firefox/chrome;
+gfwlist can be got from https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt  (Autoproxy format).
