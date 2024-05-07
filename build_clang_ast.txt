@@ -1,0 +1,21 @@
+1. download the following files;
+clang-18.1.4.src.tar.xz
+clang-tools-extra-18.1.4.src.tar.xz
+cmake-18.1.4.src.tar.xz
+compiler-rt-18.1.4.src.tar.xz
+libcxx-18.1.4.src.tar.xz
+libcxxabi-18.1.4.src.tar.xz
+libunwind-18.1.4.src.tar.xz
+llvm-18.1.4.src.tar.xz
+runtimes-18.1.4.src.tar.xz
+third-party-18.1.4.src.tar.xz
+
+2. at the same level, unzip them;
+
+3. remove the "-version" parts; 
+
+4. cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang1814 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;compiler-rt;libunwind" ../llvm
+or mac 12.0
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang1814 -DCMAKE_OSX_ARCHITECTURES="x86_64" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;compiler-rt;libunwind" -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0 ../llvm
+
+5. make -j16
