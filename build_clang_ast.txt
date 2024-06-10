@@ -1,34 +1,12 @@
-1. download the following files;
-clang-17.0.6.src.tar.xz
-clang_doxygen-17.0.6.tar.xz
-libcxxabi-17.0.6.src.tar.xz
-lldb-17.0.6.src.tar.xz
-runtimes-17.0.6.src.tar.xz
-clang-tools-extra-17.0.6.src.tar.xz
-cmake-17.0.6.src.tar.xz
-libclc-17.0.6.src.tar.xz
-libunwind-17.0.6.src.tar.xz
-llvm-17.0.6.src.tar.xz
-third-party-17.0.6.src.tar.xz
-clang-tools-extra_doxygen-17.0.6.tar.xz
-compiler-rt-17.0.6.src.tar.xz
-libcxx-17.0.6.src.tar.xz
-lld-17.0.6.src.tar.xz
-llvm_doxygen-17.0.6.tar.xz
+1. 下载llvm-project-18.1.6.src.tar.xz, 
 
-2. install rename, doxygen
+2. 建立build目录, cd build
 
-3. at the same level, unzip them;
-find . -iname ".xz" -exec tar -xf {} \;
+3. cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang-18.1.6 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;compiler-rt;libc;libclc;lld;lldb;mlir;openmp;polly;pstl;flang" -DLLVM_ENABLE_RUNTIMES="libc;libunwind;libcxxabi;libcxx" ../llvm
 
-4. remove the "-version" parts; 
-rename 's/-17.0.6.src$//' *-17.0.6.src
-rename 's/-17.0.6$//' *-17.0.6
-
-5. build
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang-17.0.6 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libclc;lld;lldb" -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" ../llvm
 ===== or mac 12.0 ===== 
 export MACOSX_DEPLOYMENT_TARGET=12.0
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang-17.0.6 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libclc;lld;lldb" -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" ../llvm
 
-6. make -j16
+3. cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang-17.0.6 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;compiler-rt;libc;libclc;lld;lldb;mlir;openmp;polly;pstl;flang" -DLLVM_ENABLE_RUNTIMES="libc;libunwind;libcxxabi;libcxx" ../llvm
+
+4. make -j16
