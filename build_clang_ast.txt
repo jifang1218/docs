@@ -10,3 +10,6 @@ export MACOSX_DEPLOYMENT_TARGET=12.0
 3. cmake -DCMAKE_INSTALL_PREFIX=/usr/local/clang-17.0.6 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;compiler-rt;libc;libclc;lld;lldb;mlir;openmp;polly;pstl;flang" -DLLVM_ENABLE_RUNTIMES="libc;libunwind;libcxxabi;libcxx" ../llvm
 
 4. make -j16
+
+Note:
+on raspberrypi, remove flang as it doesn't support 32 bit. 
