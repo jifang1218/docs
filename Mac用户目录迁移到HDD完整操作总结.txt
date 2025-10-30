@@ -1,0 +1,55 @@
+Mac 用户目录迁移到 HDD —— 完整操作总结
+
+1. 目的
+* 将 macOS 用户目录下的 Desktop、Documents、Downloads、Movies、Music、Pictures 等特殊文件夹迁移到外部 HDD。
+* 保证系统和 Finder 正确识别这些文件夹。
+* 减少 SSD 占用空间，同时保持数据完整性。
+* 使用符号链接（symlink）方式，让系统访问路径保持不变。
+
+2. 情况
+* SSD磁盘格式是APFS Case-Insensitive, 主盘, 有个HDD (APFS Case-Sensitive)从盘. 直接在UI里搞的话, 系统保护搞不了. 因此要在恢复模式下用terminal. 
+* macOS 对 Desktop/Docs 等有内部路径缓存（Bookmark），优先读取旧路径。
+* macOS对主目录的搜索顺序要注意. APFS磁盘会有保护, 不能随意加载或更改, 在恢复模式下. 
+* SSD和HDD是volume names. 
+
+4. 步骤与命令
+Step 0 - 创建目的目录
+在桌面环境里在HDD盘上创建相应的目录. 这样的话是当前用户的身份, 创建的目录也是当前用户. 否则在恢复模式下, 创建的都是root. 把相关文件都复制过去. 
+
+Step 1：进入恢复模式
+恢复模式下操作（Terminal）, 用安装盘或任何方法进入恢复模式, 需要用有线键盘, 无线键盘按不到option键的. 
+
+Step 2: 挂载SSD
+启动后, HDD是挂载在启动盘的/Volumes/HDD上了. 但是SSD是空的. 主盘会自动挂载系统卷(只读), 不会挂载数据卷(会有两个, 一个是SSD, 一个是SSD - Data). 用户目录在数据卷. 
+先要找到数据卷, 
+	diskutil list -- 找到APFS Volume SSD - Data; 
+挂载, 
+	diskutil mount "SSD - Data" -- 但是会报错, 说是加密且上锁的. 
+所以挂载前先去解锁, 
+	diskutil apfs unlockVolume "SSD - Data" -- 解锁完成. 
+	解锁后不用手动上锁, 重启后系统自动上锁. 解锁只是在当前会话有效. 
+可以继续挂载了, 
+	diskutil mount "SSD - Data" -- 输入macOS用户密码后挂载成功, 可以操作里面内容了(/Volumes/SSD\ -\ Data/Users). 
+	
+Step 3: 改目录. 
+注意可以先备份那些目录, 但不要保存在用户主目录下. 因为mac查找用户系统目录的顺序是:
+	1. 先找之前的记录位置, 而且是要真实目录, 不是符号链接. 找到了同名的符号链接, mac会继续找下一个位置, 符号链接只是作为低优先级的备选.  
+	2. 找当前主目录及其子目录里的Desktop, Documents等同名目录. 找到了的话就用. 这个比符号链接的优先级高. 
+	3. 找目录名同名的符号链接. 
+因此备份的话不要mv到当前用户主目录里. 放在别处, 比如HDD/sys_bak. 
+
+Step 4: ln -s
+并且要确保ln的目前是唯一的能用的. 否则比它优先级高的都会被选中. 也就是确保用户目录和子目录里没有那些系统目录,ln是唯一的了.
+
+Step 5: 退出恢复模式，重启系统。
+
+Step 6: 清理 Finder 偏好缓存：
+   cp ~/Library/Preferences/com.apple.finder.plist ~/Desktop/finder.plist.bak
+   rm ~/Library/Preferences/com.apple.finder.plist
+   killall Finder
+
+Step 7: 更新 Finder 侧边栏(如有报错)
+* 从侧边栏移除报错条目。
+* 打开符号链接目录 → 拖回侧边栏。
+* 测试点击是否正常访问 HDD。
+
